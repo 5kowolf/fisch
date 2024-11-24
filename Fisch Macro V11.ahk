@@ -565,7 +565,7 @@ tooltip, Failsafe: 0/%NavigationShakeFailsafe%, %TooltipX%, %Tooltip10%, 10
 NavigationFailsafeCount := 0
 NavigationCounter := 0
 ForceReset := false
-settimer, NavigationShakeFailsafe, 1000
+settimer, NavigationShakeFailsafe, 5000
 send {%NavigationKey%}
 NavigationShakeModeRedo:
 if (ForceReset == true)
@@ -851,7 +851,7 @@ if (ErrorLevel == 0)
 				{
 				tooltip, Ankle Delay: 0, %TooltipX%, %Tooltip13%, 13
 				sleep %AnkleBreakDelay%
-				AnkleBreakDelay := 0
+				AnkleBreakDelay := 1
 				}
 			else
 				{
@@ -889,6 +889,11 @@ else
 	tooltip, , , , 18
 	tooltip, , , , 19
 	tooltip, , , , 20
+        tooltip, , , , 21
+        tooltip, , , , 22
+        tooltip, , , , 23
+        tooltip, , , , 24
+        tooltip, , , , 25
 	sleep %RestartDelay%
 	goto RestartMacro
 	}
