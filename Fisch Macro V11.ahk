@@ -888,7 +888,17 @@ else
 	tooltip, , , , 17
 	tooltip, , , , 18
 	tooltip, , , , 19
-	tooltip, , , , 20
+	tooltip, , , ,20
+        tooltip, , , ,21
+        tooltip, , , ,22
+        tooltip, , , ,23
+        tooltip, , , ,24
+        tooltip, , , ,25
+        tooltip, , , ,26
+        tooltip, , , ,27
+        tooltip, , , ,28
+        tooltip, , , ,29
+        tooltip, , , ,30
 	sleep %RestartDelay%
 	goto RestartMacro
 	}
