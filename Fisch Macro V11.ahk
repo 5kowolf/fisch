@@ -40,7 +40,7 @@ HoldRodCastDuration := 1000
 WaitForBobberDelay := 1000
 
 ; Set this to your navigation key, IMPORTANT
-NavigationKey := "ň"
+NavigationKey := "\"
 
 ;     SHAKE SETTINGS     ====================================================================================================;
 
@@ -460,56 +460,6 @@ goto NavigationShakeMode
 
 ClickShakeFailsafe:
 ClickFailsafeCount++
-tooltip, Failsafe: %ClickFailsafeCount%/%ClickShakeFailsafe%, %TooltipX%, %Tooltip14%, 14
-if (ClickFailsafeCount >= ClickShakeFailsafe)
-	{
-	settimer, ClickShakeFailsafe, off
-	ForceReset := true
-	}
-return
-
-ClickShakeMode:
-
-tooltip, Current Task: Shaking, %TooltipX%, %Tooltip7%, 7
-tooltip, Click X: None, %TooltipX%, %Tooltip8%, 8
-tooltip, Click Y: None, %TooltipX%, %Tooltip9%, 9
-
-tooltip, Click Count: 0, %TooltipX%, %Tooltip11%, 11
-tooltip, Bypass Count: 0/%RepeatBypassCounter%, %TooltipX%, %Tooltip12%, 12
-
-tooltip, Failsafe: 0/%ClickShakeFailsafe%, %TooltipX%, %Tooltip14%, 14
-
-ClickFailsafeCount := 0
-ClickCount := 0
-ClickShakeRepeatBypassCounter := 0
-MemoryX := 0
-MemoryY := 0
-ForceReset := false
-
-settimer, ClickShakeFailsafe, 1000
-
-ClickShakeModeRedo:
-if (ForceReset == true)
-	{
-	tooltip, , , , 11
-	tooltip, , , , 12
-	tooltip, , , , 14
-	goto RestartMacro
-	}
-sleep %ClickScanDelay%
-PixelSearch, , , FishBarLeft, FishBarTop, FishBarRight, FishBarBottom, 0x5B4B43, %FishBarColorTolerance%, Fast
-if (ErrorLevel == 0)
-	{
-	settimer, ClickShakeFailsafe, off
-	tooltip, , , , 9
-	tooltip, , , , 11
-	tooltip, , , , 12
-	tooltip, , , , 14
-	goto BarMinigame
-	}
-else
-	{
-	PixelSearch, ClickX, ClickY, ClickShakeLeft, ClickShakeTop, ClickShakeRight, ClickShakeBottom, 0xFFFFFF, %ClickShakeColorTolerance%, Fast
 	if (ErrorLevel == 0)
 		{
 		tooltip, Click X: %ClickX%, %TooltipX%, %Tooltip8%, 8
@@ -545,36 +495,6 @@ else
 
 ;====================================================================================================;
 
-NavigationShakeFailsafe:
-NavigationFailsafeCount++
-tooltip, Failsafe: %NavigationFailsafeCount%/%NavigationShakeFailsafe%, %TooltipX%, %Tooltip10%, 10
-if (NavigationFailsafeCount >= NavigationShakeFailsafe)
-	{
-	settimer, NavigationShakeFailsafe, off
-	ForceReset := true
-	}
-return
-
-NavigationShakeMode:
-
-tooltip, Current Task: Shaking, %TooltipX%, %Tooltip7%, 7
-tooltip, Attempt Count: 0, %TooltipX%, %Tooltip8%, 8
-
-tooltip, Failsafe: 0/%NavigationShakeFailsafe%, %TooltipX%, %Tooltip10%, 10
-
-NavigationFailsafeCount := 0
-NavigationCounter := 0
-ForceReset := false
-settimer, NavigationShakeFailsafe, 1000
-send {%NavigationKey%}
-NavigationShakeModeRedo:
-if (ForceReset == true)
-	{
-	tooltip, , , , 10
-	goto RestartMacro
-	}
-sleep %NavigationSpamDelay%
-PixelSearch, , , FishBarLeft, FishBarTop, FishBarRight, FishBarBottom, 0x5B4B43, %FishBarColorTolerance%, Fast
 if (ErrorLevel == 0)
 	{
 	settimer, NavigationShakeFailsafe, off
@@ -593,37 +513,10 @@ else
 
 ;====================================================================================================;
 
-BarCalculationFailsafe:
-BarCalcFailsafeCounter++
-tooltip, Failsafe: %BarCalcFailsafeCounter%/%BarCalculationFailsafe%, %TooltipX%, %Tooltip10%, 10
-if (BarCalcFailsafeCounter >= BarCalculationFailsafe)
-	{
-	settimer, BarCalculationFailsafe, off
-	ForceReset := true
-	}
-return
-
-BarMinigame:
-
-tooltip, Current Task: Calculating Bar Size, %TooltipX%, %Tooltip7%, 7
-tooltip, Bar Size: Not Found, %TooltipX%, %Tooltip8%, 8
-tooltip, Failsafe: 0/%BarCalculationFailsafe%, %TooltipX%, %Tooltip10%, 10
-
-ForceReset := false
-BarCalcFailsafeCounter := 0
-settimer, BarCalculationFailsafe, 1000
-
-BarMinigameRedo:
-if (ForceReset == true)
-	{
-	tooltip, , , , 10
-	goto RestartMacro
-	}
-PixelSearch, BarX, , FishBarLeft, FishBarTop, FishBarRight, FishBarBottom, 0xFFFFFF, %BarSizeCalculationColorTolerance%, Fast
 if (ErrorLevel == 0)
 	{
 	settimer, BarCalculationFailsafe, off
-	if (ManualBarSize != 0)
+	if (ManualBarSize != 350)
 		{
 		WhiteBarSize := ManualBarSize
 		goto BarMinigameSingle
