@@ -484,7 +484,7 @@ ClickCount := 0
 ClickShakeRepeatBypassCounter := 0
 MemoryX := 0
 MemoryY := 0
-ForceReset := false
+ForceReset := true
 
 settimer, ClickShakeFailsafe, 1000
 
