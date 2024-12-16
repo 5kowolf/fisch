@@ -40,7 +40,7 @@ HoldRodCastDuration := 1000
 WaitForBobberDelay := 1000
 
 ; Set this to your navigation key, IMPORTANT
-NavigationKey := "ň"
+NavigationKey := "\"
 
 ;     SHAKE SETTINGS     ====================================================================================================;
 
@@ -623,7 +623,7 @@ PixelSearch, BarX, , FishBarLeft, FishBarTop, FishBarRight, FishBarBottom, 0xFFF
 if (ErrorLevel == 0)
 	{
 	settimer, BarCalculationFailsafe, off
-	if (ManualBarSize != 0)
+	if (ManualBarSize != 350)
 		{
 		WhiteBarSize := ManualBarSize
 		goto BarMinigameSingle
